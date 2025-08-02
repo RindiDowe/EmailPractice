@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Basics for Students</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7f8fc; color: #222; margin: 0; padding: 0; }
+    header { background: #4a90e2; color: #fff; padding: 20px; text-align: center; }
+    section { max-width: 740px; margin: 30px auto; background: #fff; border-radius: 14px; box-shadow: 0 4px 20px #0001; padding: 24px; }
+    h1, h2 { margin-top: 0; }
+    .parts-list { display: grid; grid-template-columns: 1fr 2fr; gap: 16px 20px; align-items: center; }
+    .part-label { display: flex; align-items: center; font-weight: bold; font-size: 1.1em; }
+    .part-label span { font-size: 2em; margin-right: 10px; }
+    .screenshot { text-align:center; margin: 28px 0 16px 0; }
+    .screenshot img { max-width:100%; border-radius: 10px; box-shadow: 0 2px 10px #0002; }
+    .example { background: #f4f4f7; border-left: 4px solid #4a90e2; padding: 12px; margin: 16px 0; }
+    .form-section { margin: 28px 0; }
+    input, textarea, select, button { font-size: 1rem; padding: 8px; border-radius: 6px; border: 1px solid #bbb; }
+    button { background: #4a90e2; color: #fff; border: none; margin-top: 10px; cursor: pointer; transition: background .2s; }
+    button:hover { background: #357ab7; }
+    .result { background: #dfffe3; border: 1px solid #94e7a0; padding: 12px; border-radius: 8px; margin-top: 8px; }
+    @media (max-width: 740px) { section { padding: 10px; } .parts-list { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>✉️ Email Basics</h1>
+    <p>Let's learn about sending and writing emails!</p>
+  </header>
+  <section>
+    <h2>Parts of an Email</h2>
+    <div class="screenshot">
+      <img src="https://raw.githubusercontent.com/jessehorne/teacher-assets/main/gmail_compose_example.png" 
+           alt="Labeled Gmail Compose Screenshot">
+      <br>
+      <small>This is what the Gmail 'Compose' window looks like. Each part is labeled!</small>
+    </div>
+    <div class="parts-list">
+      <div class="part-label"><span>📨</span>To:</div>
+      <div>The email address of the person you’re writing to. (Example: <i>teacher@example.com</i>)</div>
+
+      <div class="part-label"><span>👥</span>CC (Carbon Copy):</div>
+      <div>Send a copy of your email to someone else. Everyone who gets the email can see who is CC’d.</div>
+
+      <div class="part-label"><span>🙈</span>BCC (Blind Carbon Copy):</div>
+      <div>Send a hidden copy of your email. People in BCC are secret—others can’t see their names.</div>
+
+      <div class="part-label"><span>📝</span>Subject:</div>
+      <div>A short title that tells what your email is about. Try to keep it to one sentence.</div>
+
+      <div class="part-label"><span>👋</span>Greeting:</div>
+      <div>How you say hello. For example, "Hello Mrs. Smith," or "Hey Ben!"</div>
+
+      <div class="part-label"><span>💬</span>Body:</div>
+      <div>The main part of your email where you type your message.</div>
+
+      <div class="part-label"><span>🖐️</span>Closing:</div>
+      <div>How you finish your email politely. For example, "Thank you," or "See you soon,"</div>
+
+      <div class="part-label"><span>✍️</span>Signature:</div>
+      <div>Your name at the end (sometimes with extra info, like "4th Grade Tech Student").</div>
+
+      <div class="part-label"><span>📎</span>Attachment:</div>
+      <div>A file, picture, or document you want to send with your email.</div>
+    </div>
+
+    <h2>Formal vs. Informal Email</h2>
+    <div class="example">
+      <b>Formal Email Example:</b><br>
+      <i>To:</i> teacher@example.com<br>
+      <i>Subject:</i> Question about Homework<br>
+      <i>Message:</i> <br>
+      Hello Mrs. Smith,<br>
+      I have a question about the homework you gave us. Could you please explain number 3?<br>
+      Thank you,<br>
+      Rindi
+    </div>
+    <div class="example" style="background:#f9f0e8;border-color:#f3b961;">
+      <b>Informal Email Example:</b><br>
+      <i>To:</i> bestfriend@email.com<br>
+      <i>Subject:</i> Hi!<br>
+      <i>Message:</i><br>
+      Hey! <br>
+      Wanna play Roblox later?<br>
+      -Rindi
+    </div>
+
+    <h2>Practice: Compose an Email!</h2>
+    <form id="emailForm" class="form-section" autocomplete="off">
+      <label>To: <input type="email" id="to" required placeholder="friend@email.com"></label><br><br>
+      <label>Subject: <input type="text" id="subject" required placeholder="What is this email about?"></label><br><br>
+      <label>
+        Message:<br>
+        <textarea id="message" rows="4" cols="40" required placeholder="Write your message here..."></textarea>
+      </label><br><br>
+      <label>
+        Is this email formal or informal?
+        <select id="style" required>
+          <option value="">--Choose--</option>
+          <option value="formal">Formal (Teacher, Principal, etc.)</option>
+          <option value="informal">Informal (Friend, Family, etc.)</option>
+        </select>
+      </label><br>
+      <button type="submit">Check My Email!</button>
+    </form>
+    <div id="result"></div>
+  </section>
+  <script>
+    const form = document.getElementById('emailForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const to = document.getElementById('to').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const style = document.getElementById('style').value;
+
+      let feedback = "<b>Great job!</b> Here’s some feedback:<ul>";
+
+      // Check for greeting and closing
+      let hasGreeting = /hi|hello|dear|hey/i.test(message);
+      let hasClosing = /thanks|thank you|sincerely|regards|bye|your friend|from/i.test(message);
+
+      if(!hasGreeting) feedback += "<li>Add a greeting at the start, like 'Hello' or 'Hey!'</li>";
+      if(!hasClosing) feedback += "<li>Add a closing at the end, like 'Thanks,' 'Bye,' or your name.</li>";
+
+      // Check subject
+      if(subject.length < 3) feedback += "<li>Make sure your subject explains what your email is about.</li>";
+
+      // Check formal/informal style
+      if(style === "formal") {
+        if(/hey|what's up|wanna|lol|cya|gonna|dude/i.test(message)) feedback += "<li>Remember to use your best writing for formal emails (no slang)!</li>";
+      } else if(style === "informal") {
+        if(/dear|sincerely|regards/i.test(message)) feedback += "<li>Informal emails to friends can be casual—no need for 'Sincerely'!</li>";
+      }
+
+      if(feedback === "<b>Great job!</b> Here’s some feedback:<ul>") {
+        feedback = "<div class='result'><b>Awesome! Your email looks good!</b> 🎉</div>";
+      } else {
+        feedback += "</ul>";
+        feedback = "<div class='result'>" + feedback + "</div>";
+      }
+      result.innerHTML = feedback;
+    });
+  </script>
+</body>
+</html>
