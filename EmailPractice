@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -30,8 +31,7 @@
   <section>
     <h2>Parts of an Email</h2>
     <div class="screenshot">
-      <img src="https://raw.githubusercontent.com/jessehorne/teacher-assets/main/gmail_compose_example.png" 
-           alt="Labeled Gmail Compose Screenshot">
+      <img src="gmail_compose_example.png" alt="Labeled Gmail Compose Screenshot">
       <br>
       <small>This is what the Gmail 'Compose' window looks like. Each part is labeled!</small>
     </div>
